@@ -21,9 +21,9 @@ namespace CustomersAPI
             {
                 options.AddPolicy("CorsPolict", 
                     policy => policy.WithOrigins("http://localhost:3000", 
-                    "https://delightful-moss-0384dd60f.2.azurestaticapps.net")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
+                        "https://delightful-moss-0384dd60f.2.azurestaticapps.net")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
             });
 
             var app = builder.Build();
