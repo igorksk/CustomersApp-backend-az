@@ -19,7 +19,7 @@ namespace CustomersAPI
             builder.Services.AddTransient<ICustomerService, CustomerService>();
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolict", 
+                options.AddPolicy("CorsPolicy", 
                     policy => policy.WithOrigins("http://localhost:3000", 
                         "https://delightful-moss-0384dd60f.2.azurestaticapps.net")
                             .AllowAnyMethod()
@@ -41,7 +41,7 @@ namespace CustomersAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("AllowAll");
+            app.UseCors("CorsPolicy");
 
             DatabaseSeeder.Seed(app);
             CustomerEndpoints.MapRoutes(app);
