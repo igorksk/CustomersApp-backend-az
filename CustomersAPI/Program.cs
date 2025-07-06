@@ -19,7 +19,11 @@ namespace CustomersAPI
             builder.Services.AddTransient<ICustomerService, CustomerService>();
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                options.AddPolicy("CorsPolict", 
+                    policy => policy.WithOrigins("http://localhost:3000", 
+                    "https://delightful-moss-0384dd60f.2.azurestaticapps.net")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
 
             var app = builder.Build();
