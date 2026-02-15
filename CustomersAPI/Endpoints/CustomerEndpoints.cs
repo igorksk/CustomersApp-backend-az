@@ -1,5 +1,6 @@
 ﻿using CustomersAPI.Models;
 using CustomersAPI.Services;
+using CustomersAPI.DataContext;
 
 namespace CustomersAPI.Endpoints
 {
@@ -34,6 +35,12 @@ namespace CustomersAPI.Endpoints
                 if (!result) return Results.NotFound();
 
                 return Results.NoContent();
+            });
+
+            app.MapPost("/customers/reset", () =>
+            {
+                DatabaseSeeder.Reset(app);
+                return Results.Ok(new { message = "Customers reset to seed data" });
             });
         }
     }
